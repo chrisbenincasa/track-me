@@ -1,0 +1,14 @@
+%div
+  SIGN UP!
+  %form{:action => '/users', :method => 'post'}
+    %p
+      %label{:for => 'name'} Name:
+      %input.name{:type => 'text', :name => 'name'}
+    %p
+      %label{:for => 'email'} Email:
+      %input.email{:type => 'text', :name => 'email'}
+    %p
+      %label{:for => 'password'} Password:
+      %input.password{:type => 'password', :name => 'password'}
+    %p
+      %input.submit{:type => 'submit', :value => 'Join!'}

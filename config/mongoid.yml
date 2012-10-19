@@ -1,0 +1,6 @@
+development:
+  sessions:
+    default:
+      database: quantify-me
+      hosts:
+        - localhost:27017
