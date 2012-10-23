@@ -1,2 +1,11 @@
+require 'rubygems'
+require 'bundler'
+
+Bundler.require
+
 require './app'
-run Sintra::Application
+require './lib/middleware'
+Mongoid.load!('config/mongoid.yml')
+require './lib/initializer'
+
+run Sinatra::Application

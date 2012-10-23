@@ -13,6 +13,7 @@ define defs, ($, _, Backbone, TracksCollection) ->
       console.log track, 'modelAdd'
 
     modelAll: ->
+      console.log Tracks
       Tracks.each @modelAdd
       console.log @, 'modelAll'
 

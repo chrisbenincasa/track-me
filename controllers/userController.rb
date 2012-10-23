@@ -40,7 +40,7 @@ get '/users/signout' do
 end
 
 post '/users/signout' do
-  if session[:user] and session[:password]
+  if session[:user]
     session[:user] = nil
     redirect '/users/signin'
   else

@@ -1,5 +1,6 @@
 require 'sass/plugin/rack'
 require 'rack/coffee'
+
 use Rack::MethodOverride
 
 use Sass::Plugin::Rack

@@ -1,3 +1,10 @@
 require './helpers/app'
-require './models/user'
-require './controllers/userController'
+
+# require models
+Dir['./models/*'].each {|file| 
+  puts file
+  require file
+}
+
+# require controllers
+Dir['./controllers/*'].each {|file| require file}
