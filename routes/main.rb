@@ -2,6 +2,13 @@ class TrackMe < Sinatra::Application
   get '/' do
     halt
   end
+
+  get '/js/templates/:file.js' do
+    puts settings.assets.inspect
+    content_type :js
+    settings.assets["#{params[:file]}.js"]
+  end
+
   get '/users' do
     redirect '/'
   end
