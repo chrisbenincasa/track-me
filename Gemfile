@@ -5,6 +5,7 @@ gem 'sprockets'
 gem "mongoid"
 gem "rack-coffee"
 gem "haml"
+gem 'dust-sinatra'
 gem "thin"
 gem "sass"
 gem "json"

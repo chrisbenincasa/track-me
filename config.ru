@@ -1,12 +1,15 @@
 require 'rubygems'
 require 'bundler'
-
 Bundler.require
 
-require './lib/initializer'
-require './lib/middleware'
-require './app'
-Mongoid.load!('config/mongoid.yml')
+root = ::File.dirname(__FILE__)
+require ::File.join(root, 'app')
+run TrackMe.new
 
-#run Sinatra::Application
-run TrackMe
+# require './lib/initializer'
+# require './lib/middleware'
+# require './app'
+# Mongoid.load!('config/mongoid.yml')
+
+# #run Sinatra::Application
+# run TrackMe
