@@ -6,9 +6,6 @@ define ['underscore', 'backbone'], (_, Backbone) ->
       units: null
 
     idAttribute: 'tid'
-    
-    initialize: ->
-      #do nothing
 
   class Tracks extends Backbone.Collection
     model: Track

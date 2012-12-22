@@ -3,9 +3,10 @@ require 'bundler'
 
 Bundler.require
 
-require './app'
-require './lib/middleware'
-Mongoid.load!('config/mongoid.yml')
 require './lib/initializer'
+require './lib/middleware'
+require './app'
+Mongoid.load!('config/mongoid.yml')
 
-run Sinatra::Application
+#run Sinatra::Application
+run TrackMe

@@ -26,7 +26,20 @@ requirejs.config({
 });
 
 require([
-  'js/views/app'
-], function(AppView){
-  var app = new AppView;
+  'js/views/Dashboard', 'js/routes/Dashboard'
+], function(Dashboard, Router){
+  var router = new Router;
+  if(!window.history.pushState) {
+    Backbone.history.start()
+  } else {
+    Backbone.history.start({pushState: true})
+  }
+  $(document).on('click', 'a[href]:not([data-bypass])', function(e) {
+    var href = {prop: $(this).attr("href"), attr: $(this).attr('href')}
+    var root = location.protocol + "//" + location.host + app.root;
+    if(href.prop.slice(0, root.length) == root) {
+      e.preventDefault();
+      Backbone.history.navigate(href.attr, true);
+    }
+  });
 });

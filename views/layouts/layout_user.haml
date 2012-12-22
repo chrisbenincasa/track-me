@@ -1,7 +1,7 @@
 !!! 5
 %head
-  %link{:rel => 'stylesheet', :href => '../stylesheets/style.css'}
-  %script{:src => '../js/lib/require.js', :data => {:main => '../main.js'}}
+  %link{:rel => 'stylesheet', :href => url('/stylesheets/style.css')}
+  %script{:src => url('/js/lib/require.js'), :data => {:main => './main.js'}}
 %body
   %div.main.user
     = yield

@@ -3,6 +3,7 @@ define defs, ($, _, Backbone, TracksCollection) ->
   Tracks = new TracksCollection
 
   class TrackView extends Backbone.View
+    el: '#dashboard'
     initialize: ->
       Tracks.fetch()
       Tracks.on 'add', @modelAdd, @
@@ -13,9 +14,7 @@ define defs, ($, _, Backbone, TracksCollection) ->
       console.log track, 'modelAdd'
 
     modelAll: ->
-      console.log Tracks
       Tracks.each @modelAdd
-      console.log @, 'modelAll'
 
     render: ->
-      console.log @, 'render'
+      @$el.html 'hello!'

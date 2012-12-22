@@ -1,14 +1,5 @@
-require 'bcrypt'
-require './models/user'
-
 get '/users' do
-  if(@user = logged_in) != nil
-    @track = Track.new(:tid => Track.count + 1, 
-      :date_created => DateTime.now(),
-      :name => 'Default'
-    )
-    @user.tracks << @track
-  end
+  redirect '/'
 end
 
 get '/users/signup' do
@@ -36,10 +27,6 @@ post '/users/signin' do
 end
 
 get '/users/signout' do
-  haml :'user/signout', {:layout => :'layouts/layout_user'}
-end
-
-post '/users/signout' do
   if session[:user]
     session[:user] = nil
     redirect '/users/signin'
@@ -65,8 +52,8 @@ get '/users/current/tracks', :provides => 'json' do
   end
 end
 
+#create a user
 post '/users' do
-  #create a user
   password_salt = BCrypt::Engine.generate_salt
   password_hash = BCrypt::Engine.hash_secret(params[:password], password_salt)
   if User.where(email: params[:email]).exists?
@@ -79,8 +66,7 @@ post '/users' do
       :uid => User.count + 1
     )
     if @user.save
-      session[:user] = email
-      session[:password] = password_hash
+      session[:user] = @user
       redirect '/dashboard'
     else
       redirect '/users/signup'
