@@ -1,6 +1,7 @@
 source "http://rubygems.org"
 
 gem "sinatra", :require => 'sinatra/base'
+gem 'sinatra-backbone', :require => 'sinatra/backbone'
 gem 'sprockets'
 gem "mongoid"
 gem "rack-coffee"

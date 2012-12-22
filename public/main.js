@@ -11,14 +11,15 @@ requirejs.config({
       ],
       exports: 'Backbone'
     },
-    'handlebars': {
-      exports: 'Handlebars'
+    'underscore': {
+      deps: ['jst']
     }
   },
 
   paths: {
     jquery: 'js/lib/jquery-1.8.1.min',
     json: 'js/lib/json2',
+    jst: '/jst',
     underscore: 'js/lib/underscore-min',
     backbone: 'js/lib/backbone-min',
     text: 'js/lib/require/text',

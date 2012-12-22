@@ -1,8 +1,7 @@
 require 'sinatra'
 require 'sass/plugin/rack'
 require 'rack/coffee'
-puts Dir.pwd
-require './lib/sinatra-jstsupport'
+require 'sinatra/jstpages'
 
 class TrackMe < Sinatra::Application
   enable :sessions
@@ -13,6 +12,10 @@ class TrackMe < Sinatra::Application
 
   use Rack::Logger
   use Rack::MethodOverride
+
+  Sinatra::JstPages.registered(self)
+  puts Sinatra::JstPages.instance_methods(false)
+  serve_jst '/jst.js'
 
   if ENV['RACK_ENV'] == 'development'
     use Rack::Reloader
