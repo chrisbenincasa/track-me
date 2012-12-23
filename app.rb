@@ -1,6 +1,4 @@
 require 'sinatra'
-require 'sass/plugin/rack'
-require 'rack/coffee'
 
 class TrackMe < Sinatra::Application
   enable :sessions
@@ -17,21 +15,24 @@ class TrackMe < Sinatra::Application
     use Rack::Reloader
   end
 
-  use Sass::Plugin::Rack
-  Sass::Plugin.options[:load_paths] = ['public/stylesheets']
+  # use Sass::Plugin::Rack
+  # Sass::Plugin.options[:load_paths] = ['public/stylesheets']
 
-  use Rack::Coffee, {
-    :root => 'public',
-    :urls => '/js',
-    #:cache_compile => true
-    #:urls => ['/js/collections', '/js/models', '/js/routes', '/js/views']
-  }
+  # use Rack::Coffee, {
+  #   :root => 'public',
+  #   :urls => '/js',
+  #   #:cache_compile => true
+  #   #:urls => ['/js/collections', '/js/models', '/js/routes', '/js/views']
+  # }
 
   # Sprockets asset packaging for haml-js infused JST
   settings.assets.register_engine '.hamljs', RubyHamlJs::Template
   settings.assets.append_path(File.join(File.dirname(__FILE__), 'views', 'js', 'templates'))
-  # assets.append_path(File.join(File.path('../'), 'app', 'assets', 'javascripts'))
-  # assets.append_path(File.join(File.path('../'), 'app', 'assets', 'stylesheets'))
+  settings.assets.append_path(File.join(File.dirname(__FILE__), 'assets', 'javascripts'))
+  settings.assets.append_path(File.join(File.dirname(__FILE__), 'assets', 'stylesheets'))
+
+  configure :development do
+  end
 
   configure :production do
     set :haml, {:ugly => true}

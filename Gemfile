@@ -4,9 +4,8 @@ gem "sinatra", :require => 'sinatra/base'
 gem 'ruby-haml-js'
 gem 'sprockets'
 gem "mongoid"
-gem "rack-coffee"
+gem "coffee-script"
 gem "haml"
-gem 'dust-sinatra'
 gem "thin"
 gem "sass"
 gem "json"
