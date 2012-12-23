@@ -1,12 +1,10 @@
-defs = ['js/views/Dashboard', 'js/views']
-define defs, (Dashboard, views) ->
-  class Router extends Backbone.Router
-    routes:
-      "dashboard/profile"   : 'profile'
+class App.Router extends Backbone.Router
+  routes:
+    "dashboard/profile"   : 'profile'
 
-    initialize: ->
-      @dashboard = new Dashboard()
+  initialize: ->
+    @dashboard = new views.Dashboard()
 
-    profile: ->
-      @dashboard.launch
-        feature: views.Profile
+  profile: ->
+    @dashboard.launch
+      feature: views.Profile
