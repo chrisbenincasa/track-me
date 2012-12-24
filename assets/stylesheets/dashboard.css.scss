@@ -1,5 +1,3 @@
-@import url(reset.css);
-@import url(normalize.css);
 * {
   box-sizing: border-box; }
 
@@ -20,19 +18,22 @@ div#dashboard_top_bar {
 div#wrapper {
   position: relative;
   margin: 75px 0 0 0;
-  padding: 15px; }
+}
 
 div#dashboard_side_bar {
   position: fixed;
   top: 75px;
   width: 175px;
+  padding: 10px;
   border-right: blue solid thin; }
 
 div#dashboard {
   position: relative;
   margin: 0 100px 0 175px;
   height: 1000px;
-  padding: 15px; }
+  padding: 15px; 
+}
 
 div#footer {
-  position: fixed; }
+  position: fixed; 
+}

@@ -1,4 +1,4 @@
 #= require ./jquery
-#= require ./underscore-min
+#= require ./underscore
 #= require ./json2
-#= require ./backbone-min
+#= require ./backbone

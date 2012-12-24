@@ -1,6 +1,6 @@
 class App.Router extends Backbone.Router
   routes:
-    "dashboard/profile"   : 'profile'
+    "dashboard/profile/"   : 'profile'
 
   initialize: ->
     @dashboard = new views.Dashboard()

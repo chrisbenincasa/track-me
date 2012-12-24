@@ -27,16 +27,19 @@ class TrackMe < Sinatra::Application
 
   # Sprockets asset packaging for haml-js infused JST
   settings.assets.register_engine '.hamljs', RubyHamlJs::Template
-  settings.assets.append_path(File.join(File.dirname(__FILE__), 'views', 'js', 'templates'))
   settings.assets.append_path(File.join(File.dirname(__FILE__), 'assets', 'javascripts'))
   settings.assets.append_path(File.join(File.dirname(__FILE__), 'assets', 'stylesheets'))
+  settings.assets.append_path(File.join(File.dirname(__FILE__), 'assets', 'jst'))
 
   configure :development do
+
   end
 
   configure :production do
     set :haml, {:ugly => true}
     set :clean_trace, true
+    #settings.assets.css_compressor = SassCompressor.new
+    settings.assets.js_compressor = Uglifier.new
   end
 
   helpers do

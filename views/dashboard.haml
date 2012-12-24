@@ -1,19 +1,16 @@
 !!! 5
 %head
-  //%link{:rel => 'stylesheet', :href => url('/stylesheets/style.css')}
-  //%script{:src => url('/js/lib/require.js'), :data => {:main => '../main.js'}}
   %link{:rel => 'stylesheet', :href => url('/assets/stylesheets/application.css')}
-  %script{:src => url('/assets/javascripts/application.js')}
-  %script{:src => url('/js/templates/nothello.js')}
 %body
   %div#dashboard_top_bar
     %p
       %span.name
         = user.name
-      %a.profile{:href => "./profile"} Profile
+      %a.profile{:href => "dashboard/profile/"} Profile
       %a.sign-out{:href => '/users/signout'} Sign Out
 
   %div#wrapper
     %div#dashboard_side_bar
       %p stuff
     %div#dashboard
+  %script{:src => url('/assets/javascripts/application.js')}
