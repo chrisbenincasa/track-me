@@ -6,11 +6,12 @@
     %p
       %span.name
         = user.name
-      %a.profile{:href => "dashboard/profile/"} Profile
-      %a.sign-out{:href => '/users/signout'} Sign Out
+      %a.profile{:href => url("dashboard/profile/")} Profile
+      %a.sign-out{:href => url('/users/signout'), :data => {:bypass => 'bypass'}} Sign Out
 
   %div#wrapper
     %div#dashboard_side_bar
-      %p stuff
+      %a.main-dashboard{:href => url('dashboard/')} Dashboard
     %div#dashboard
+      %h1 Nothing here yet! Do some stuff!
   %script{:src => url('/assets/javascripts/application.js')}

@@ -12,7 +12,7 @@ class TrackMe < Sinatra::Application
   use Rack::MethodOverride
 
   if ENV['RACK_ENV'] == 'development'
-    use Rack::Reloader
+    
   end
 
   # use Sass::Plugin::Rack
@@ -32,7 +32,7 @@ class TrackMe < Sinatra::Application
   settings.assets.append_path(File.join(File.dirname(__FILE__), 'assets', 'jst'))
 
   configure :development do
-
+    use Rack::Reloader
   end
 
   configure :production do

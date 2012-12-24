@@ -10,7 +10,9 @@ class views.Dashboard extends Backbone.View
     Backbone.history.navigate "dashboard/profile", trigger: true
 
   launch: (opts) ->
-    feature = new opts.feature
     @$el.unbind()
-    @$el.empty()
-    @$el.html(feature.render())
+    if opts and opts.feature
+      feature = new opts.feature
+      @$el.html(feature.render().$el)
+    else
+      @$el.html JST['dashboard']()
