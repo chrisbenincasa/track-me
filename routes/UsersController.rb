@@ -1,23 +1,4 @@
 class TrackMe < Sinatra::Application
-  get '/' do
-    halt
-  end
-
-  get '/assets/javascripts/:file.js' do
-    content_type :js
-    settings.assets["#{params[:file]}.js"]
-  end
-
-  get '/js/templates/:file.js' do
-    content_type :js
-    settings.assets["#{params[:file]}.js"]
-  end
-
-  get '/assets/stylesheets/:file.css' do
-    content_type :css
-    settings.assets["#{params[:file]}.css"]
-  end
-
   get '/users' do
     redirect '/'
   end
@@ -57,8 +38,9 @@ class TrackMe < Sinatra::Application
 
   get '/users/current', :provides => 'json' do
     if (@user = logged_in) != nil
-      trunc_user = @user.clone
-      return trunc_user.to_json
+      user_return_hash = @user.attributes
+      user_return_hash.delete_if { |e| e == "password" || e == "salt" }
+      return user_return_hash.to_json
     else
       return 'not logged in'
     end
