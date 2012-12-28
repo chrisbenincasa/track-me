@@ -1,18 +1,17 @@
-class views.Dashboard extends Backbone.View
-  el: '#dashboard'
-  events: 
-    'click a.profile' : 'profileLink'
+currentView = null
+class views.Dashboard extends views.Base
+  el: 'div#dashboard section.content'
   initialize: ->
-    console.log 'new dashboard'
-
-  profileLink: (e) ->
-    e.preventDefault()
-    Backbone.history.navigate "dashboard/profile", trigger: true
+    console.log 'new dashboard' if console?
+    @tracks = new model.Tracks
+    @tracks.fetch()
 
   launch: (opts) ->
+    @$el.empty()
     @$el.unbind()
     if opts and opts.feature
       feature = new opts.feature
-      @$el.html(feature.render().$el)
+        tracks: @tracks
+      feature.show()
     else
       @$el.html JST['dashboard']()

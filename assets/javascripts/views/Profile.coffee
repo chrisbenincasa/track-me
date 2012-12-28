@@ -1,7 +1,8 @@
-class views.Profile extends Backbone.View
+class views.Profile extends views.MainView
+  #el: 'section.content'
+  template: 'profile'
   initialize: ->
-    console.log 'init App.Profile'
+    console.log 'init views.Profile'
   render: ->
-    html = JST['profile']()
-    @$el.html html
+    @$el.html JST[@template]()
     @

@@ -46,14 +46,6 @@ class TrackMe < Sinatra::Application
     end
   end
 
-  get '/users/current/tracks', :provides => 'json' do
-    if (@user = logged_in) != nil
-      return @user.tracks.to_json
-    else
-      return 'not logged in', 302
-    end
-  end
-
   #create a user
   post '/users' do
     password_salt = BCrypt::Engine.generate_salt

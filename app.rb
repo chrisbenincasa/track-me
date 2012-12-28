@@ -40,6 +40,7 @@ class TrackMe < Sinatra::Application
     set :clean_trace, true
     #settings.assets.css_compressor = SassCompressor.new
     settings.assets.js_compressor = Uglifier.new
+    settings.assets.debug = true
   end
 
   helpers do

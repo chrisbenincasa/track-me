@@ -2,6 +2,7 @@
 #= require_self
 #= require ./lib/lib
 #= require_tree ../jst
+#= require_tree ./supers
 #= require_tree ./models
 #= require_tree ./routes
 #= require_tree ./views
