@@ -1,0 +1,8 @@
+%section.create-track
+  %h1 Create a track
+  %div
+    %p
+      %label.name-label{for: 'track_name'}> Name: 
+      %input.name{type: 'text', name: 'track_name'}
+    %p
+      %button.create-button Create

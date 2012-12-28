@@ -1,6 +1,6 @@
 class model.Track extends Backbone.Model
   defaults:
-    date_created: Date.now()
+    date_created: 0 + (new Date()) / 1000
     name: null
     units: null
 

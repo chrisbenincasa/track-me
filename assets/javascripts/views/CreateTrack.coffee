@@ -5,12 +5,14 @@ class views.CreateTrack extends views.MainView
   initialize: ->
     console.log 'new CreateTrack View'
     @trackName = @$el.find 'input.name'
+
   render: ->
     @$el.html JST[@template]()
     @
+
   create: ->
-    test = @$el.find 'input.name'
-    console.log test.val(), @trackName.val()
-    newModel = new model.Track 
-      name: @trackName.val()
-    console.log newModel
+    if @trackName.val()
+      test = @options.tracks.create
+        name: @trackName.val()
+        units: 'feet'
+      console.log test

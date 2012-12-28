@@ -1,17 +1,14 @@
 class views.MainView extends views.Base
   constructor: (options = {}) ->
     @_configure options
-
-    @renderTo = App.baseElement unless @renderTo?
+    @renderDest = App.baseElement unless @renderDest?
     super
 
   show: (opts = {}) ->
     if currentView isnt @
       @$el.hide()
-
-      renderTo = $ @renderTo
-      @$el.appendTo renderTo
-
+      renderDest = $ @renderDest
+      @$el.appendTo renderDest
       if currentView?
         currentView.hide()
         @$el.fadeIn 'fast' if @$el.parent().is 'visible'
@@ -22,10 +19,7 @@ class views.MainView extends views.Base
   hide: (opts = {}) ->
     if currentView is @
       currentView.$el.hide()
-      if @options.cacheable is false
-        currentView.$el.remove()
-      else
-        currentView.$el.detach()
+      currentView.$el.remove()
       currentView = null
 
 App.baseElement = 'div#dashboard > section.content'
