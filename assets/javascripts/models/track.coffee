@@ -3,6 +3,7 @@ class model.Track extends Backbone.Model
     date_created: 0 + (new Date()) / 1000
     name: null
     units: null
+    tid: null
 
   idAttribute: 'tid'
 

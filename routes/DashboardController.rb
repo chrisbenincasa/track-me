@@ -2,7 +2,7 @@ require 'date'
 class TrackMe < Sinatra::Application
   before '/dashboard*' do
     if (@user = logged_in) == nil
-      halt
+      401
     end
   end
 
@@ -29,11 +29,16 @@ class TrackMe < Sinatra::Application
       :date_created => Time.at(date).to_datetime,
       :units => units
     )
+    newTrack.user = @user
     if newTrack.save
-      redirect '/dashboard'
+      200
     else
-      halt
+      500
     end
+  end
+
+  get '/dashboard/track/:tid' do
+    
   end
 
   get '/dashboard/track/create' do

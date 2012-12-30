@@ -2,9 +2,10 @@ class views.CreateTrack extends views.MainView
   template: 'dashboard/track/create'
   events:
     'click button.create-button'  : 'create'
+    
   initialize: ->
-    console.log 'new CreateTrack View'
     @trackName = @$el.find 'input.name'
+    @options.tracks.on 'request', @requestHandler
 
   render: ->
     @$el.html JST[@template]()
@@ -15,4 +16,7 @@ class views.CreateTrack extends views.MainView
       test = @options.tracks.create
         name: @trackName.val()
         units: 'feet'
-      console.log test
+
+  requestHandler: (model, xhr, options) ->
+    if xhr.status == 200
+      @options.tracks.fetch()
