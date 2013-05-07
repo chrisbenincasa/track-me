@@ -3,12 +3,14 @@ class App.Router extends Backbone.Router
     "dashboard" : 'dashboard'
     "dashboard/profile" : 'profile'
     "dashboard/track/create" : 'createTrack'
+    "dashboard/track/:id" : 'navToTrack'
 
   initialize: ->
     @dashboard = new views.Dashboard
 
   dashboard: ->
-    @dashboard.launch()
+    @dashboard.launch
+      feature: views.TrackList
 
   profile: ->
     @dashboard.launch
@@ -17,3 +19,7 @@ class App.Router extends Backbone.Router
   createTrack: ->
     @dashboard.launch
       feature: views.CreateTrack
+
+  navToTrack: (tid) ->
+    @dashboard.launch
+      feature: views.Track

@@ -2,10 +2,8 @@ currentView = null
 class views.Dashboard extends views.Base
   el: 'div#dashboard section.content'
   initialize: ->
-    @tracks = new model.Tracks
-    @tracks.on 'reset', @test, @
-    @tracks.fetch()
-    #  update: true
+    @tracks = new model.Tracks (window.App.tracks)
+    #@tracks.fetch()
 
   launch: (opts) ->
     @$el.empty()
@@ -16,12 +14,3 @@ class views.Dashboard extends views.Base
       feature.show()
     else
       @$el.html JST['dashboard']()
-
-  test: (collection) ->
-    collection.each (model, index) =>
-      @addTrackView model, index
-
-  addTrackView: (model, index) ->
-    view = new views.Track
-      model: model
-    $('ul.track-list').append view.render().el

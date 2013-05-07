@@ -1,12 +1,15 @@
 * {
-  box-sizing: border-box; }
+  box-sizing: border-box; 
+}
+
+$top-height: 45px;
 
 body {
   margin: 0;
   font-family: Helvetica; }
 
 div#dashboard_top_bar {
-  height: 75px;
+  height: $top-height;
   border-bottom: black solid thin;
   position: fixed;
   width: 100%;
@@ -17,12 +20,12 @@ div#dashboard_top_bar {
 
 div#wrapper {
   position: relative;
-  margin: 75px 0 0 0;
+  margin: $top-height 0 0 0;
 }
 
 div#dashboard_side_bar {
   position: fixed;
-  top: 75px;
+  top: $top-height;
   width: 175px;
   padding: 10px;
   border-right: blue solid thin; }

@@ -3,15 +3,17 @@ class TrackMe < Sinatra::Application
   before '/dashboard*' do
     if (@user = logged_in) == nil
       401
+    else
+      @tracks = @user.tracks
     end
   end
 
   get '/dashboard' do
-    haml :dashboard, :locals => {:user => @user}
+    haml :dashboard
   end
 
   get '/dashboard/profile' do
-    haml :dashboard, :locals => {:user => @user}
+    haml :dashboard
   end
 
   get '/dashboard/tracks', :provides => 'json' do
@@ -37,11 +39,11 @@ class TrackMe < Sinatra::Application
     end
   end
 
-  get '/dashboard/track/:tid' do
-    
+  get '/dashboard/track/create' do
+    haml :dashboard
   end
 
-  get '/dashboard/track/create' do
-    haml :dashboard, :locals => {:user => @user}
+  get '/dashboard/track/:tid' do
+    
   end
 end

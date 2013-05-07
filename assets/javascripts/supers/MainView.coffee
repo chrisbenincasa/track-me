@@ -1,3 +1,4 @@
+currentView = null
 class views.MainView extends views.Base
   constructor: (options = {}) ->
     @_configure options
@@ -8,6 +9,7 @@ class views.MainView extends views.Base
     if currentView isnt @
       @$el.hide()
       renderDest = $ @renderDest
+      @render()
       @$el.appendTo renderDest
       if currentView?
         currentView.hide()

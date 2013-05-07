@@ -5,18 +5,17 @@
   %div#dashboard_top_bar
     %p
       %span.name
-        = user.name
+        = @user.name
       %a.profile{:href => url("dashboard/profile")} Profile
       %a.sign-out{:href => url('/users/signout'), :data => {:bypass => 'bypass'}} Sign Out
-
   %div#wrapper
     %div#dashboard_side_bar
       %ul
         %li
           %a.main-dashboard{:href => url('dashboard')} Dashboard
-        %li
-          %a.new-track{:href => url('dashboard/track/create')} + Create a new Track
     %div#dashboard
       %section.content
         %h1 Nothing here yet! Do some stuff!
   %script{:src => url('/assets/javascripts/application.js')}
+  :javascript
+      App.tracks = #{@tracks.to_json}
