@@ -1,0 +1,4 @@
+%section.track-listing
+  %ul.track-list
+    %li
+      %a.new-track{href: 'dashboard/track/create', data-relative: true} + Create a new Track
